@@ -1,6 +1,5 @@
 #include<vector>
 #include<map>
-#include<algorithm>
 using namespace std;
 class Solution {
 public:
@@ -10,16 +9,14 @@ public:
         for(int i=0;i<n;i++){
             freq[nums[i]]++;
         }
-        sort(nums.begin(),nums.end());
         int ans=0;
-        int left=0;
-        int right=n-1;
-        while(left<=right){
-            if(freq.find(nums[left]+1)!=freq.end()){
-                ans=max(ans,freq[nums[left]]+freq[nums[left]+1]);
+        for(auto it:freq){
+            int num=it.first;
+            if(freq.find(num+1)!=freq.end()){
+                ans=max(ans,freq[num]+freq[num+1]);
             }
-            left++;
         }
+       
         return ans;
     }
 };
