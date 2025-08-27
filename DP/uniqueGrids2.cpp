@@ -15,7 +15,7 @@ public:
         int n=obstacleGrid[0].size();
         // dp.resize(m,vector<int>(n,0));
         // return solve(obstacleGrid,m-1,n-1);
-        //state defn:- dp[i][j]->number of ways to reach (0,0) from (i,j); since there is only 1 way to reach (0,0) from (0,0) so we return 1;
+        //state defn:- dp[i][j]->number of ways to reach  (i,j) from (0,0); since there is only 1 way to reach (0,0) from (0,0) so we return 1;
 vector<int> prev(n,0),curr(n,0);
         for(int i=0;i<m;i++){
             for(int j=0;j<n;j++){
