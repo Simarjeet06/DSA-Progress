@@ -1,9 +1,5 @@
 #include<vector>
-#include<algorithm>
-#include<unordered_map>
-#include<string>                
-using namespace std;
-
+using namespace std;    
 class Solution {
 public:
 int n;
@@ -34,13 +30,11 @@ int t[366];
         for(int i=n-2;i>=0;i--){
             int path1=costs[0]+dp[i+1];
             int j=i;
-            int maxi=days[i]+7;
-            while(j<n && days[j]<maxi && maxi<=days[n-1]) j++;
-            int path2=costs[1]+dp[j];
+            while(j<n && days[j]<days[i]+7) j++;
+            int path2=costs[1]+((j<n)?dp[j]:0);
             int k=i;
-            int maxi2=days[i]+30;
-            while(k<n && days[k]<maxi2 && maxi2<=days[n-1]) k++;
-            int path3=costs[2]+dp[k];
+            while(k<n && days[k]<days[i]+30) k++;
+            int path3=costs[2]+(k<n?dp[k]:0);
             dp[i]=min({path1,path2,path3});
         }
         return dp[0];
